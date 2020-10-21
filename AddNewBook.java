@@ -3,8 +3,10 @@ package com.example.sofe4640bookstore;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +29,12 @@ public class AddNewBook extends AppCompatActivity {
 
     Button btnParse = null;
     HttpURLConnection conn= null;
+    ImageView imgFile = null;
     TextView jsonView;
+    Button btnImage = null;
+    Uri imgUri;
+
+    private static final int IMAGE = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,16 @@ public class AddNewBook extends AppCompatActivity {
         txtview.setText(tempMsg);
         btnParse = (Button) findViewById(R.id.btnParse);
         jsonView = (TextView) findViewById(R.id.lblMessage);
+        btnImage = (Button) findViewById(R.id.btnFile);
+        imgFile = (ImageView) findViewById(R.id.img);
+
+        btnImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View view) {
+                chooseImage();
+            }
+        });
 
         btnParse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +71,21 @@ public class AddNewBook extends AppCompatActivity {
         });
     }
 
+    public void chooseImage(){
+        Intent bookimage = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(bookimage, IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int request, int result, Intent data) {
+
+        super.onActivityResult(request, result, data);
+
+        if (request == RESULT_OK && request == IMAGE){
+            imgUri = data.getData();
+            imgFile.setImageURI(imgUri);
+        }
+    }
 
 
     class JSONTask extends AsyncTask<String, String, String>{

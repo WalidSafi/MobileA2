@@ -58,18 +58,43 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/img"
+            android:background="#F4FFFE"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose and upload File"
+            android:id= "@+id/btnFile"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Publisher"
-            android:textSize="25dp">
+            android:textSize="15dp">
         </TextView>
 
         <TextView
             android:id="@+id/pub"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:height="30dp"
+            android:height="20dp"
             android:layout_marginLeft="20dp">
 
         </TextView>
@@ -85,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Author Name"
-            android:textSize="25dp">
+            android:textSize="15dp">
         </TextView>
 
         <TextView
@@ -93,7 +118,7 @@
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:text=" "
-            android:height="30dp"
+            android:height="20dp"
             android:layout_marginLeft="20dp">
 
         </TextView>
@@ -104,23 +129,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:height="30dp"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Summary"
-            android:textSize="25dp">
+            android:textSize="15dp">
     </TextView>
 
         <TextView
             android:id="@+id/txtSummary"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:textSize="25px"
-            android:height="30dp"
-            android:layout_marginLeft="20dp">
+            android:layout_marginLeft="20dp"
+            android:height="20dp"
+            android:textSize="20px">
 
         </TextView>
     </LinearLayout>
@@ -135,17 +159,62 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Price"
-            android:textSize="25dp">
+            android:textSize="15dp">
         </TextView>
 
         <TextView
             android:id="@+id/txtPrice"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:height="30dp"
+            android:height="20dp"
             android:layout_marginLeft="20dp">
 
         </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quanitity"
+            android:textSize="15dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/quantity"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:height="20dp"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp">
+
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textSize="15dp">
+        </TextView>
+
+       <Spinner
+           android:layout_width="150dp"
+           android:layout_height="20dp"
+           android:id="@+id/categorySpinner"
+           android:layout_marginLeft="20dp"/>
     </LinearLayout>
 
 
