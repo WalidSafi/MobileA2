@@ -60,6 +60,7 @@ public class AddNewBook extends AppCompatActivity {
             }
         });
 
+
         btnParse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,17 +129,6 @@ public class AddNewBook extends AppCompatActivity {
             super.onPostExecute(result);
             //jsonView.setText(result.toString());
 
-            //parsing Jason data
-          /*
-            {
-                "movies": [
-                {
-                    "movie": "Avengers",
-                        "year": 2012
-                }
-
-            }
-            */
 
             String jsonString = result.toString();
 
@@ -148,6 +138,7 @@ public class AddNewBook extends AppCompatActivity {
             TextView description_summary = (TextView) findViewById(R.id.txtSummary);
             TextView price_book = (TextView) findViewById(R.id.txtPrice);
             TextView authors_name = (TextView) findViewById(R.id.txtAuthorName);
+            EditText q = (EditText) findViewById(R.id.editQuantity);
 
             try {
 
@@ -182,24 +173,22 @@ public class AddNewBook extends AppCompatActivity {
                         // Default values
                         String publish = "Not available";
                         String description = "No Summary is available for the Selected book";
-                        String price = null;
+                        String price_string = null;
                         String author = null;
                         int pageCount = 0;
                         String version = null;
-                        int quantity = -1;
-                        int pages = -1;
 
-                        // Gets publisher information is it exists
+                        // Gets publisher information is it exists and stores it in publish
                         if(firstObj.getJSONObject("volumeInfo").has("publisher")){
                             publish = firstObj.getJSONObject("volumeInfo").getString("publisher");
                         }
 
                         // Gets Price information it it exists
                         if(sales.equals("FOR_SALE")){
-                            price = firstObj.getJSONObject("saleInfo").getJSONObject("listPrice").getString("amount");
-                            System.out.println(price);
+                            price_string = firstObj.getJSONObject("saleInfo").getJSONObject("listPrice").getString("amount");
                         } else {
-                            price = " Not For Sale ";
+                            price_string = "0";
+                            price_book.setText("Not For Sale");
                         }
 
                         // Gets Description if exists
@@ -222,21 +211,33 @@ public class AddNewBook extends AppCompatActivity {
                             version = firstObj.getJSONObject("volumeInfo").getString("contentVersion");
                         }
 
-                        // Sets the edit texts, probably will change it to text view
+                        //Sets the text feilds to the JSON values
                         name.setText(title);
                         authors_name.setText(author);
                         publisher_name.setText(publish);
                         description_summary.setText(description);
-                        price_book.setText("$" + price + " CAD");
+
+                        double convert = Double.parseDouble(price_string);
+                        int price = (int) convert;
+
+                        String quan = q.getText().toString();
+                        double convert_quantity = Double.parseDouble(quan);
+                        int quantity = (int) convert_quantity;
+
+                        // These values are the ones needed to go into the database,
+                        System.out.println("Quanitity: " + quantity);
+                        System.out.println("Price is: " + price);
+                        System.out.println("Page count is: " + pageCount);
+                        System.out.println("Edition is: " + version);
+                        System.out.println("Publisher: " + publish);
+                        System.out.println("Title: " + title);
+                        String user = "Walid";
 
                         //jsonView.setText(search_id);
 
                         break;
                     }
                 }
-
-               // JSONObject firstObj = jsonArray.getJSONObject(1);
-               // String isbn = firstObj.getString("id");
 
             } catch (JSONException e) {
                 e.printStackTrace();

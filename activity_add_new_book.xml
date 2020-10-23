@@ -75,6 +75,7 @@
             android:layout_marginLeft="20dp"
             />
 
+
     </LinearLayout>
 
     <LinearLayout
@@ -182,17 +183,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quanitity"
-            android:textSize="15dp">
+            android:textSize="15dp"
+            android:layout_marginTop="10dp">
         </TextView>
 
         <EditText
-            android:id="@+id/quantity"
+            android:id="@+id/editQuantity"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:height="20dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp">
+            android:layout_marginLeft="20dp"
+            android:text="0">
 
         </EditText>
     </LinearLayout>
@@ -225,6 +227,7 @@
             android:id= "@+id/btnParse"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_marginTop="20dp"/>
+
     <TextView
         android:id="@+id/lblMessage"
         android:layout_width="wrap_content"
